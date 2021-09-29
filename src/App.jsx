@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { FaDiscord, FaTwitterSquare } from "react-icons/fa";
-
+import { MdArrowUpward } from "react-icons/md";
 import A1 from "./assets/a1.png";
 import A2 from "./assets/a2.png";
 import A3 from "./assets/a3.png";
@@ -16,6 +16,24 @@ import $ from "jquery";
 function App() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+    /* Scroll-to-Top button visibility control */
+    gsap.fromTo(
+      ".moveToTop",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: "#section1",
+          toggleActions: "play pause resume none",
+          start: "bottom 0%",
+          scrub: true,
+        },
+      }
+    );
   }, []);
   const moveTo1 = () => {
     gsap.to(window, {
@@ -50,8 +68,20 @@ function App() {
       ease: Power4.easeInOut,
     });
   };
+  const handleToTop = () => {
+    gsap.to(window, {
+      duration: 1,
+      scrollTo: "#section1",
+      ease: Power4.easeInOut,
+    });
+  };
   return (
     <div className="App">
+      {/* MoveToTop Button */}
+      <span className="moveToTop" onClick={handleToTop}>
+        <MdArrowUpward />
+      </span>
+
       {/* Header */}
       <div className="header">
         <div className="box">
@@ -111,7 +141,7 @@ function App() {
         <div className="box">
           <div className="about-content">
             <div className="ac-left">
-              <h2>Know Us ...!!!</h2>
+              <h2 className="mainHeading">Know Us</h2>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
                 sit accusantium iure ad. Dolorem repudiandae, delectus magni
@@ -143,7 +173,7 @@ function App() {
       <div className="roadmap section" id="section3">
         <div className="box">
           <div className="roadmap-content">
-            <h2>Roadmap</h2>
+            <h2 className="mainHeading">Roadmap</h2>
             <div className="roadmap-container">
               <div className="roadmap-box">
                 <div className="roadmap-index">
@@ -287,7 +317,7 @@ function App() {
       <div className="collection section" id="section4">
         <div className="box">
           <div className="collection-content">
-            <h2>Collection</h2>
+            <h2 className="mainHeading">Collection</h2>
             <div className="collection-grid">
               <div className="collection-grid-box">
                 <img src={A1} alt="" />
@@ -360,7 +390,7 @@ function App() {
             </div>
             <div className="cc-right">
               <h3>We are too good to be cats</h3>
-              <h2>Community ...!!!</h2>
+              <h2 className="mainHeading">Community</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Nesciunt quasi rem minus necessitatibus cumque ratione earum
@@ -375,7 +405,7 @@ function App() {
       {/* Footer */}
       <div className="box">
         <div className="footer">
-         {/*  <span>
+          {/*  <span>
             <FaDiscord />
             <FaTwitterSquare />
           </span> */}
