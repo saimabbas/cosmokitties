@@ -92,6 +92,7 @@ button {
   font-size: 2.5rem;
   color: var(--white);
   cursor: pointer;
+  display: none;
 }
 .header-content h1 {
   font-size: 2.75rem;
@@ -99,6 +100,26 @@ button {
   font-weight: 700;
   margin: 0 2.5rem 0 0;
   cursor: pointer;
+}
+.header-mob {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: var(--white);
+  width: 100%;
+  display: none;
+  transform: translate(0, 100%);
+  padding: 2.75rem 0 0 0;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+.header-mob main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.close {
+  display: none;
 }
 .header-pc {
   display: flex;
@@ -127,6 +148,12 @@ button {
   width: 100%;
 }
 
+.header-mob a {
+  color: var(--blue);
+  font-size: 1.85rem;
+  font-weight: 500;
+  margin: 0 0 2.75rem 0;
+}
 /* Hero Section */
 .hero {
   background-color: var(--blue);
@@ -522,35 +549,12 @@ button {
   opacity: 0.75;
   font-weight: 800;
 }
-.header-mob {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background-color: var(--white);
-  width: 100%;
-  display: none;
-  transform: translate(0, 100%);
-  padding: 2.75rem 0 0 0;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
-}
-.header-mob main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-.header-mob a {
-  color: var(--blue);
-  font-size: 1.85rem;
-  font-weight: 500;
-  margin: 0 0 2.75rem 0;
-}
-.close {
-  display: none;
-}
 @media screen and (max-width: 1150px) {
   .header-pc {
     display: none;
+  }
+  .header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   }
   .header-content h1 {
     font-size: 2.5rem;
@@ -622,6 +626,9 @@ button {
   }
 }
 @media screen and (max-width: 700px) {
+  .header-content > svg.burger {
+    display: flex;
+  }
   .box {
     padding: 0 1.75rem;
   }
