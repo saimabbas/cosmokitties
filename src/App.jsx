@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { FaDiscord, FaTwitterSquare } from "react-icons/fa";
-import { MdArrowUpward } from "react-icons/md";
+import { MdArrowUpward, MdMenu, MdClose } from "react-icons/md";
 import A1 from "./assets/a1.png";
 import A2 from "./assets/a2.png";
 import A3 from "./assets/a3.png";
@@ -25,7 +25,7 @@ function App() {
       },
       {
         opacity: 1,
-        duration: 0.5,
+        duration: 1,
         scrollTrigger: {
           trigger: "#section1",
           toggleActions: "play pause resume none",
@@ -35,6 +35,7 @@ function App() {
       }
     );
   }, []);
+
   const moveTo1 = () => {
     gsap.to(window, {
       scrollTo: {
@@ -68,11 +69,94 @@ function App() {
       ease: Power4.easeInOut,
     });
   };
+
+  /* Mobile Anchors */
+
+  const moveTo2Mob = () => {
+    gsap.to(window, {
+      scrollTo: {
+        y: "#section2",
+        offsetY: 65,
+      },
+      ease: Power4.easeInOut,
+    });
+    $(".header-mob").slideUp(500);
+    $(".close").css({
+      display: "none",
+    });
+    $(".burger").css({
+      display: "flex",
+    });
+  };
+  const moveTo3Mob = () => {
+    gsap.to(window, {
+      scrollTo: {
+        y: "#section3",
+        offsetY: 65,
+      },
+      ease: Power4.easeInOut,
+    });
+    $(".header-mob").slideUp(500);
+    $(".close").css({
+      display: "none",
+    });
+    $(".burger").css({
+      display: "flex",
+    });
+  };
+  const moveTo4Mob = () => {
+    gsap.to(window, {
+      scrollTo: {
+        y: "#section4",
+        offsetY: 65,
+      },
+      ease: Power4.easeInOut,
+    });
+    $(".header-mob").slideUp(500);
+    $(".close").css({
+      display: "none",
+    });
+    $(".burger").css({
+      display: "flex",
+    });
+  };
+  const moveTo5Mob = () => {
+    gsap.to(window, {
+      scrollTo: "#section5",
+      ease: Power4.easeInOut,
+    });
+    $(".header-mob").slideUp(500);
+    $(".close").css({
+      display: "none",
+    });
+    $(".burger").css({
+      display: "flex",
+    });
+  };
+
   const handleToTop = () => {
     gsap.to(window, {
       duration: 1,
       scrollTo: "#section1",
       ease: Power4.easeInOut,
+    });
+  };
+  const showMobHeader = () => {
+    $(".header-mob").slideDown(500);
+    $(".close").css({
+      display: "flex",
+    });
+    $(".burger").css({
+      display: "none",
+    });
+  };
+  const hideMobHeader = () => {
+    $(".header-mob").slideUp(500);
+    $(".close").css({
+      display: "none",
+    });
+    $(".burger").css({
+      display: "flex",
     });
   };
   return (
@@ -87,7 +171,7 @@ function App() {
         <div className="box">
           <div className="header-content">
             <h1 onClick={moveTo1}>CosmoKitties</h1>
-            <div>
+            <div className="header-pc">
               <a onClick={moveTo2} className="mt mt2">
                 About
               </a>
@@ -100,6 +184,25 @@ function App() {
               <a onClick={moveTo5} className="mt mt5">
                 Community
               </a>
+            </div>
+
+            <MdMenu className="burger" onClick={showMobHeader} />
+            <MdClose className="close" onClick={hideMobHeader} />
+            <div className="header-mob">
+              <main>
+                <a onClick={moveTo2Mob} className="mt mt2">
+                  About
+                </a>
+                <a onClick={moveTo3Mob} className="mt mt3">
+                  Roadmap
+                </a>
+                <a onClick={moveTo4Mob} className="mt mt4">
+                  Collection
+                </a>
+                <a onClick={moveTo5Mob} className="mt mt5">
+                  Community
+                </a>
+              </main>
             </div>
           </div>
         </div>

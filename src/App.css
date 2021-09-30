@@ -70,6 +70,7 @@ button {
   z-index: 1000;
   border: 1px solid var(--white);
   cursor: pointer;
+  opacity: 0;
 }
 
 /* Header */
@@ -87,6 +88,11 @@ button {
   justify-content: space-between;
   height: 6.5rem;
 }
+.header-content > svg {
+  font-size: 2.5rem;
+  color: var(--white);
+  cursor: pointer;
+}
 .header-content h1 {
   font-size: 2.75rem;
   color: var(--white);
@@ -94,7 +100,7 @@ button {
   margin: 0 2.5rem 0 0;
   cursor: pointer;
 }
-.header-content > div {
+.header-pc {
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -182,7 +188,7 @@ button {
   position: absolute;
   bottom: 0;
   right: 0;
-  transform: translate(0, 10rem);
+  transform: translate(0, 5rem);
 }
 .hc-right span svg {
   font-size: 2.5rem;
@@ -516,8 +522,39 @@ button {
   opacity: 0.75;
   font-weight: 800;
 }
-
+.header-mob {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: var(--white);
+  width: 100%;
+  display: none;
+  transform: translate(0, 100%);
+  padding: 2.75rem 0 0 0;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+.header-mob main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.header-mob a {
+  color: var(--blue);
+  font-size: 1.85rem;
+  font-weight: 500;
+  margin: 0 0 2.75rem 0;
+}
+.close {
+  display: none;
+}
 @media screen and (max-width: 1150px) {
+  .header-pc {
+    display: none;
+  }
+  .header-content h1 {
+    font-size: 2.5rem;
+  }
   .section {
     padding: 7.5rem 0;
   }
@@ -585,35 +622,6 @@ button {
   }
 }
 @media screen and (max-width: 700px) {
-  .header {
-    display: none;
-  }
-  .header-content {
-    flex-direction: column;
-    align-items: center;
-    height: unset;
-    padding: 1.5rem 0;
-  }
-  .header-content h1 {
-    margin: 0 0 1.5rem 0;
-  }
-  .header-content > div {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    grid-gap: 1.5rem;
-    width: 100%;
-  }
-  .header-content a {
-    font-size: 1.5rem;
-    width: 100%;
-    text-align: center;
-    margin: 0;
-  }
-  .header {
-    position: unset;
-    top: unset;
-  }
   .box {
     padding: 0 1.75rem;
   }
@@ -624,7 +632,7 @@ button {
     grid-gap: 5rem;
   }
   .hc-right span {
-    transform: translate(0, 1.25rem);
+    transform: translate(0, -1.5rem);
   }
   .hc-right img {
     width: 75%;
@@ -657,7 +665,7 @@ button {
     margin: 0 0 0 -5rem;
   }
   .mainHeading {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
   }
   .ac-left p {
     font-size: 1.5rem;
@@ -665,6 +673,7 @@ button {
   }
   .mainHeading::before {
     height: 1px;
+    width: 5rem;
   }
   .about-content {
     grid-gap: 2.5rem;
